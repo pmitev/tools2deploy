@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/miniforge3
+
+eval "$(${PREFIX}/bin/conda shell.bash hook)"
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "Uninstalling miniforge"
+  # Clean cache
+  #conda clean -ay
+
+  echo "1.Remove any modifications to your shell rc files that were made by Miniforge:"
+  conda init --reverse
+
+  echo "2.Remove the folder and all subfolders where the base environment for Miniforge was installed:"
+  CONDA_BASE_ENVIRONMENT=$(conda info --base)
+  rm -rf ${CONDA_BASE_ENVIRONMENT}
+
+  echo "3.Remove any global conda configuration files that are left behind."
+  echo ${HOME}/.condarc will be removed if it exists
+  rm -f "${HOME}/.condarc"
+  echo ${HOME}/.conda and underlying files will be removed if they exist.
+  rm -fr ${HOME}/.conda
+  rm ${HOME}/env/miniforge3
+fi

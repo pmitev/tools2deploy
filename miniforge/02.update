@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/miniforge3
+
+eval "$(${PREFIX}/bin/conda shell.bash hook)"
+
+mamba update -y  mamba
+mamba update -y --all
