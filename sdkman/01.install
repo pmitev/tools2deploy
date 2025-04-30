@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source common.conf
+
+PREFIX=${PREFIX_ROOT}/sdkman
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "ERROR: Folder already exists!"
+  exit
+fi
+
+if [[ ! -z ${PREFIX} ]]; then
+  export SDKMAN_DIR="${PREFIX}" && curl -s "https://get.sdkman.io?rcupdate=false" | bash
+
+  mkdir -p ${HOME}/env && \
+  echo "export SDKMAN_DIR=\"${PREFIX}\"" >  ${HOME}/env/sdkman
+  echo "source \"${PREFIX}/bin/sdkman-init.sh\""    >> ${HOME}/env/sdkman
+else
+  echo 'ERROR: $PREFIX not set'
+fi

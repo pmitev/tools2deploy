@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/nextflow
+source ${HOME}/env/nextflow
+
+nextflow self-update

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/sdkman
+
+source ${HOME}/env/sdkman
+
+sdk install java

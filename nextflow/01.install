@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source common.conf
+
+PREFIX=${PREFIX_ROOT}/nextflow
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then 
+  echo "ERROR: Folder already exists!"
+  exit
+fi
+
+mkdir -p ${PREFIX} && cd ${PREFIX} && curl -s https://get.nextflow.io | bash
+chmod +x ./nextflow && cd -
+
+if [[ ! -z ${PREFIX} ]]; then
+  mkdir -p ${HOME}/env && \
+  echo "export PATH+=:${PREFIX}"    > ${HOME}/env/nextflow
+  echo "export NXF_DIST=${PREFIX}/framework" >> ${HOME}/env/nextflow
+else
+  echo 'ERROR: $PREFIX not set'
+fi
+
+# nextflow info -d

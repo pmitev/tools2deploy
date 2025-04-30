@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/nextflow
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  rm -rf ${PREFIX}
+  rm ${HOME}/env/nextflow
+fi

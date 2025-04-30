@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/uv
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "Uninstalling uv and all tools"
+  rm -rf ${PREFIX}
+fi

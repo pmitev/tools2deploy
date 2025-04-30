@@ -1,0 +1,45 @@
+#!/bin/bash
+
+source common.conf
+
+PREFIX=${PREFIX_ROOT}/uv
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "ERROR: Folder already exists!"
+  exit
+fi
+
+if [[ ! -z ${PREFIX} ]]; then
+  export UV_INSTALL_DIR="${PREFIX}"
+  export INSTALLER_NO_MODIFY_PATH=1
+
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  mkdir -p ${HOME}/env
+
+cat << EOF > ${HOME}/env/uv
+#!/bin/sh
+# add binaries to PATH if they aren't added yet
+# affix colons on either side of \$PATH to simplify matching
+case ":\${PATH}:" in
+    *:"/sw/apps/uv":*)
+        export UV_PYTHON_BIN_DIR="${PREFIX}"
+        export UV_PYTHON_INSTALL_DIR="${PREFIX}/python"
+        export UV_TOOL_DIR="${PREFIX}/tool"
+        export UV_TOOL_BIN_DIR="${PREFIX}/tool_bin"
+        ;;
+    *)
+        # Prepending path in case a system-installed binary needs to be overridden
+        export PATH="${PREFIX}:${PREFIX}/tool_bin:\$PATH"
+        export UV_PYTHON_BIN_DIR="${PREFIX}"
+        export UV_PYTHON_INSTALL_DIR="${PREFIX}/python"
+        export UV_TOOL_DIR="${PREFIX}/tool"
+        export UV_TOOL_BIN_DIR="${PREFIX}/tool_bin"
+        ;;
+esac
+EOF
+
+else
+  echo 'ERROR: $PREFIX not set'
+fi

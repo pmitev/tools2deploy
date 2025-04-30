@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/sdkman
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "Uninstalling sdk and all tools"
+  rm -rf ${PREFIX}
+fi
