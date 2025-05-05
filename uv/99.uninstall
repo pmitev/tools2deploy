@@ -7,4 +7,5 @@ PREFIX=${PREFIX_ROOT}/uv
 if [[ -d ${PREFIX} ]]; then
   echo "Uninstalling uv and all tools"
   rm -rf ${PREFIX}
+  rm ${HOME}env/uv
 fi

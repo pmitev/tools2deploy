@@ -11,6 +11,7 @@ if [[ -d ${PREFIX} ]]; then
 fi
 
 if [[ ! -z ${PREFIX} ]]; then
+  export PIXI_NO_PATH_UPDATE=1
   export PIXI_HOME="${PREFIX}"
 
   curl -fsSL https://pixi.sh/install.sh | bash

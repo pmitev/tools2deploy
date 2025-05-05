@@ -5,9 +5,13 @@ PREFIX=${PREFIX_ROOT}/pixi
 
 # Check if directory already exists
 if [[ -d ${PREFIX} ]]; then
+  source ${HOME}/env/pixi
+
   echo "Cleaning pixi cache"
   pixi clean cache
 
-  echo "Uninstalling uv and all tools"
+  echo "Uninstalling pixi and all tools"
   rm -rf ${PREFIX}
+
+  rm ${HOME}/env/pixi
 fi

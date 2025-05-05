@@ -7,4 +7,5 @@ PREFIX=${PREFIX_ROOT}/sdkman
 if [[ -d ${PREFIX} ]]; then
   echo "Uninstalling sdk and all tools"
   rm -rf ${PREFIX}
+  rm ${HOME/env/sdkman}
 fi
