@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source common.conf
+PREFIX=${PREFIX_ROOT}/pixi
+
+# Check if directory already exists
+if [[ -d ${PREFIX} ]]; then
+  echo "Cleaning pixi cache"
+  pixi clean cache
+
+  echo "Uninstalling uv and all tools"
+  rm -rf ${PREFIX}
+fi
