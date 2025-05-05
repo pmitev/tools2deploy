@@ -3,9 +3,16 @@
 source common.conf
 PREFIX=${PREFIX_ROOT}/uv
 
+source ${HOME}/env/uv
+
 # Check if directory already exists
 if [[ -d ${PREFIX} ]]; then
   echo "Uninstalling uv and all tools"
+  uv tools uninstall --all
+
+  echo "Cleaning cache"
+  uv cache clean
+
   rm -rf ${PREFIX}
   rm ${HOME}env/uv
 fi
