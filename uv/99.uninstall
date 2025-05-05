@@ -14,5 +14,5 @@ if [[ -d ${PREFIX} ]]; then
   uv cache clean
 
   rm -rf ${PREFIX}
-  rm ${HOME}env/uv
+  rm ${HOME}/env/uv
 fi
