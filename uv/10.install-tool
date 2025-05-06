@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source ~/env/uv
+
+
+list+=("ssh-crypt" "qrcode[pil]" "nf-core" "python-openstackclient")
+list+=("--with=mkdocs-material mkdocs")
+
+#list+=("--with=urllib3 --with=pandas --with=plotly marimo[recommended]")
+#list+=("--with= --with=pymatgen --with=flask --with=psycopg2-binary --with=ase-ext ase")
+#list+=("pyhanko[pkcs11,image-support,opentype]")
+#list+=("")
+#list+=("")
+
+for i in ${!list[@]}; do
+  uv tool install ${list[$i]}
+done

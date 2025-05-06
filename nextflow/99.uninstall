@@ -7,4 +7,6 @@ PREFIX=${PREFIX_ROOT}/nextflow
 if [[ -d ${PREFIX} ]]; then
   rm -rf ${PREFIX}
   rm ${HOME}/env/nextflow
+else
+  echo "${PREFIX} does not exists"
 fi

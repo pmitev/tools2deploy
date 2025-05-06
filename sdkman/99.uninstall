@@ -8,4 +8,6 @@ if [[ -d ${PREFIX} ]]; then
   echo "Uninstalling sdk and all tools"
   rm -rf ${PREFIX}
   rm ${HOME/env/sdkman}
+else
+  echo "${PREFIX} does not exists"
 fi

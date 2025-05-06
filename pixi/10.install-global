@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ~/env/pixi
+
+pixi global install --with=numpy --with=matplotlib --with=rich ipython
+
+pixi global install pixi-pack parallel fastfetch
+
+#pixi global install terraform lazydocker nvtop
+
+#pixi global install oras pandoc gawk git
+

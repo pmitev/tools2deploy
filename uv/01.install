@@ -40,6 +40,9 @@ case ":\${PATH}:" in
 esac
 EOF
 
+source $HOME/env/uv
+uv python install cpython-3.13
+
 else
   echo 'ERROR: $PREFIX not set'
 fi
