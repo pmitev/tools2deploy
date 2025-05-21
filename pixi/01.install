@@ -21,6 +21,7 @@ if [[ ! -z ${PREFIX} ]]; then
 cat << EOF > ${HOME}/env/pixi
 #!/bin/bash
 export PIXI_HOME="${PREFIX}"
+export PIXI_CACHE_DIR="${PREFIX}/cache"
 export PATH=\${PATH}:\${PIXI_HOME}/bin
 EOF
 
